@@ -1,0 +1,92 @@
+{
+  "platformCpu": {
+    "label": "Platform base - CPU (Edge OS, runtime, management agent)",
+    "value": 0.12,
+    "unit": "core-eq",
+    "basis": "FIELD: Client 1 device total 6.25% x 4 cores = 0.25 core-eq, minus ~0.13 attributable to its apps = ~0.12 left for the OS/runtime."
+  },
+  "platformRamGb": {
+    "label": "Platform base - RAM",
+    "value": 0.3,
+    "unit": "GB",
+    "basis": "ESTIMATE. Host memory on Client 1 was 1.6 GB in use with ~2.2 GB of app memory reported, so little is left for the OS."
+  },
+  "platformStorageGb": {
+    "label": "Platform base - storage",
+    "value": 3.0,
+    "unit": "GB",
+    "basis": "FIELD: Client 1 used 8.8 GB in total; Client 2 24.9 GB. After subtracting the apps (Field Data sheet) ~1-6 GB remains for the OS."
+  },
+  "headroom": {
+    "label": "Design headroom",
+    "value": 0.2,
+    "unit": "%",
+    "basis": "ENGINEERING CHOICE (reduced from 30% on request - 'a little headroom'). Applied to CPU, storage and data rate."
+  },
+  "bytesPerSample": {
+    "label": "Bytes per stored sample (compressed)",
+    "value": 16,
+    "unit": "bytes",
+    "basis": "ESTIMATE. Value + timestamp + quality after time-series compression."
+  },
+  "dbOverhead": {
+    "label": "Database overhead factor",
+    "value": 1.5,
+    "unit": "x",
+    "basis": "ESTIMATE. Indexes, WAL, retention-policy slack."
+  },
+  "winccCpuBase": {
+    "label": "WinCC Unified runtime - base CPU",
+    "value": 1.0,
+    "unit": "core-eq",
+    "basis": "FIELD-CALIBRATED: Client 2 device load is 2.14 core-eq (18.9% x 6 cores x 1.89) but its apps only account for ~0.4. The remainder (~1.7) is attributed to WinCC Unified + HMI clients because it is the main difference from Client 1. The WinCC app page itself shows only 0.39%, so VERIFY on a live system."
+  },
+  "winccRamBaseGb": {
+    "label": "WinCC Unified runtime - base RAM",
+    "value": 0.9,
+    "unit": "GB",
+    "basis": "FIELD: 895 MB (Client 2)."
+  },
+  "winccStorageGb": {
+    "label": "WinCC Unified runtime - base storage",
+    "value": 5.1,
+    "unit": "GB",
+    "basis": "FIELD: 5.08 GB (Client 2)."
+  },
+  "winccCpuPerClient": {
+    "label": "WinCC Unified - CPU per concurrent web client",
+    "value": 0.1,
+    "unit": "core-eq",
+    "basis": "ESTIMATE (part of the calibration above)."
+  },
+  "winccRamPerClientGb": {
+    "label": "WinCC Unified - RAM per concurrent web client",
+    "value": 0.02,
+    "unit": "GB",
+    "basis": "ESTIMATE."
+  },
+  "winccCpuPer1000Tags": {
+    "label": "WinCC Unified - CPU per 1,000 tags",
+    "value": 0.1,
+    "unit": "core-eq",
+    "basis": "ESTIMATE. Siemens manual test: 6,000 tags published from 5 PLCs on an IPC227E with 3 HMI screens, no data loss."
+  },
+  "winccRamPer1000TagsGb": {
+    "label": "WinCC Unified - RAM per 1,000 tags",
+    "value": 0.02,
+    "unit": "GB",
+    "basis": "ESTIMATE."
+  },
+  "memoryReservationFactor": {
+    "label": "Memory-limit reservation factor",
+    "value": 2.5,
+    "unit": "x",
+    "basis": "FIELD+DOC: the Industrial Edge 'Memory Limit Check' compares the sum of each app's RESERVED/limit memory with 90% of device RAM. Client 1 reserves 5.9 GB for ~2.2 GB of real use (2.7x); Client 2 8.0 GB for ~3.7 GB (2.1x). RAM pass/fail uses actual x this factor."
+  },
+  "dataRatePerCoreEq": {
+    "label": "Data-rate ceiling per core-equivalent",
+    "value": 8000,
+    "unit": "pts/s",
+    "basis": "DOC-DERIVED: Siemens tested 40,000 value changes/s on an IPC427E (4 cores x index 1.13 = 4.5 core-eq) = ~8,900 per core-eq; 8,000 used."
+  }
+}

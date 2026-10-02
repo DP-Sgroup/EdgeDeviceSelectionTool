@@ -1,0 +1,308 @@
+[
+  {
+    "name": "Databus (MQTT broker)",
+    "category": "Data management",
+    "cpu": 0.005,
+    "ramGb": 0.19,
+    "storageGb": 1.8,
+    "arm": true,
+    "gpu": false,
+    "basis": "FIELD: 0.08% CPU / 169 MB / 0.83 GB (Client 1, 4-core Atom); 0.03% / 183 MB / 1.75 GB (Client 2, 6-core Xeon). DOC: 280 MB RAM to install (Databus Configurator V1.8.2). Normally 1 per device.",
+    "confidence": {
+      "cpu": "field",
+      "ramGb": "field",
+      "storageGb": "field",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Common Configurator",
+    "category": "Data management",
+    "cpu": 0.005,
+    "ramGb": 0.47,
+    "storageGb": 1.6,
+    "arm": false,
+    "gpu": false,
+    "basis": "FIELD (Client 1): 0.08% CPU / 469 MB / 1.56 GB. ARM support not documented. Needed by the OPC UA / S7 / Modbus / EtherNet/IP / PROFINET connectors.",
+    "confidence": {
+      "cpu": "field",
+      "ramGb": "field",
+      "storageGb": "field",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Databus Gateway + Registry Service",
+    "category": "Data management",
+    "cpu": 0.02,
+    "ramGb": 0.25,
+    "storageGb": 1.0,
+    "arm": false,
+    "gpu": false,
+    "basis": "Required by Modbus TCP / EtherNet/IP / PROFINET connectors (per manuals). Not seen on your devices - estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "IIH Essentials",
+    "category": "Data management",
+    "cpu": 0.02,
+    "ramGb": 0.36,
+    "storageGb": 1.3,
+    "arm": true,
+    "gpu": false,
+    "basis": "FIELD: 0.5% CPU / 191 MB / 0.62 GB (Client 1); 0.15% / 355 MB / 1.23 GB (Client 2). DOC: Siemens states min 2 GB RAM + 10 GB disk AVAILABLE, but actual use is far lower. IIH is offered on ARM (IOT2050).",
+    "confidence": {
+      "cpu": "field",
+      "ramGb": "field",
+      "storageGb": "field",
+      "arm": "siemens",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "IIH Semantics",
+    "category": "Data management",
+    "cpu": 0.03,
+    "ramGb": 0.33,
+    "storageGb": 0.9,
+    "arm": false,
+    "gpu": false,
+    "basis": "FIELD: 0.83% CPU / 331 MB / 0.87 GB (Client 1); 0.13% / 321 MB / 0.85 GB (Client 2).",
+    "confidence": {
+      "cpu": "field",
+      "ramGb": "field",
+      "storageGb": "field",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Flow Creator (Node-RED)",
+    "category": "Data management",
+    "cpu": 0.16,
+    "ramGb": 0.33,
+    "storageGb": 3.5,
+    "arm": true,
+    "gpu": false,
+    "basis": "FIELD (Client 2, heavy use - taken as the maximum): 1.38% CPU of a 6-core Xeon / 329 MB / 3.49 GB (464 MB of it flow data). DOC: 450 MB RAM to install; listed for ARM (IOT2050).",
+    "confidence": {
+      "cpu": "field",
+      "ramGb": "field",
+      "storageGb": "field",
+      "arm": "siemens",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Cloud Connector (MQTT / Insights Hub)",
+    "category": "Data management",
+    "cpu": 0.03,
+    "ramGb": 0.3,
+    "storageGb": 2.0,
+    "arm": true,
+    "gpu": false,
+    "basis": "Listed by Siemens for IOT2050 (ARM). Not seen on your devices - estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "siemens",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Network Tester",
+    "category": "Data management",
+    "cpu": 0.005,
+    "ramGb": 0.05,
+    "storageGb": 0.1,
+    "arm": false,
+    "gpu": false,
+    "basis": "Installed on both sites; app page not captured (32 MB image). Estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Remote Service client (RS-Client)",
+    "category": "Security",
+    "cpu": 0.005,
+    "ramGb": 0.05,
+    "storageGb": 0.1,
+    "arm": false,
+    "gpu": false,
+    "basis": "Seen on Client 2 (16 MB image); app page not captured. Estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Time-series DB (e.g. InfluxDB, 3rd party)",
+    "category": "Data management",
+    "cpu": 0.1,
+    "ramGb": 0.5,
+    "storageGb": 10,
+    "arm": true,
+    "gpu": false,
+    "basis": "Third-party - estimate. Data volume sized separately from retention inputs.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Dashboards (e.g. Grafana, 3rd party)",
+    "category": "Data management",
+    "cpu": 0.03,
+    "ramGb": 0.15,
+    "storageGb": 1.0,
+    "arm": true,
+    "gpu": false,
+    "basis": "Third-party - estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Performance Insight",
+    "category": "Analytics",
+    "cpu": 0.1,
+    "ramGb": 2.0,
+    "storageGb": 10,
+    "arm": false,
+    "gpu": false,
+    "basis": "DOC (Performance Insight V1.6 manual): min 2 GB RAM + 10 GB disk AVAILABLE (actual use likely lower - unmeasured). CPU: estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "siemens",
+      "storageGb": "siemens",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Anomaly Detection",
+    "category": "Analytics",
+    "cpu": 0.3,
+    "ramGb": 2.4,
+    "storageGb": 10,
+    "arm": false,
+    "gpu": false,
+    "basis": "DOC (Anomaly Detection V1.2 manual): 2.4 GB RAM + 10 GB disk; 'deep time analysis' needs IPC427E or IPC847E. CPU: estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "siemens",
+      "storageGb": "siemens",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "AI Inference Server (CPU)",
+    "category": "Analytics",
+    "cpu": 1.0,
+    "ramGb": 4.0,
+    "storageGb": 20,
+    "arm": false,
+    "gpu": false,
+    "basis": "DOC (AI Inference Server manual 09/2024): single pipeline tested on IPC227E/427E/847E/BX-39A. No RAM/CPU figures - depends on your model; estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "AI Inference Server (GPU accelerated)",
+    "category": "Analytics",
+    "cpu": 0.5,
+    "ramGb": 4.0,
+    "storageGb": 20,
+    "arm": false,
+    "gpu": true,
+    "basis": "DOC: GPU variant tested on IPC427E/847E/BX-39A/BX-59A. Needs a GPU in the device. Estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "siemens"
+    }
+  },
+  {
+    "name": "Custom Python / Docker analytics app",
+    "category": "Analytics",
+    "cpu": 0.1,
+    "ramGb": 0.3,
+    "storageGb": 5,
+    "arm": true,
+    "gpu": false,
+    "basis": "Your own containers (e.g. Andon Proxy at Client 2) - edit to suit.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Firewall / VPN container (3rd party)",
+    "category": "Security",
+    "cpu": 0.05,
+    "ramGb": 0.5,
+    "storageGb": 2,
+    "arm": true,
+    "gpu": false,
+    "basis": "Third-party - estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  },
+  {
+    "name": "Intrusion detection / security monitoring",
+    "category": "Security",
+    "cpu": 0.3,
+    "ramGb": 1.0,
+    "storageGb": 10,
+    "arm": false,
+    "gpu": false,
+    "basis": "Third-party - estimate.",
+    "confidence": {
+      "cpu": "estimate",
+      "ramGb": "estimate",
+      "storageGb": "estimate",
+      "arm": "estimate",
+      "gpu": "estimate"
+    }
+  }
+]

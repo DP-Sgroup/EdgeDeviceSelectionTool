@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industrial Edge Device Selector</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <div class="brand">
+        <h1>Industrial Edge Device Selector</h1>
+        <p>Sizing tool for DPS Core / DPS Pro and Siemens SIMATIC Industrial Edge hardware</p>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Pages">
+        <button class="tab" role="tab" id="tab-req" aria-controls="page-req" aria-selected="true">1&nbsp; Requirements</button>
+        <button class="tab" role="tab" id="tab-rec" aria-controls="page-rec" aria-selected="false">2&nbsp; Recommendation</button>
+      </nav>
+      <div class="pill" id="live-pill" title="Live result - updates as you type">
+        <span class="pill-label">Recommended</span>
+        <strong id="live-device">...</strong>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="page-req" role="tabpanel" aria-labelledby="tab-req"></section>
+    <section id="page-rec" role="tabpanel" aria-labelledby="tab-rec" hidden></section>
+  </main>
+
+  <footer class="foot">
+    <span>Evidence key:</span>
+    <span class="ev ev-siemens">Siemens documentation</span>
+    <span class="ev ev-field">Measured on client installs</span>
+    <span class="ev ev-estimate">Estimate</span>
+    <span class="foot-note">Siemens publishes almost no CPU sizing, so CPU figures rest mainly on site measurements. Always confirm the final configuration with Siemens / your distributor.</span>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

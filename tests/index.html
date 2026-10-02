@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Selector tests</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; margin: 24px; }
+    .pass { color: #0b6b2a; } .fail { color: #a31515; font-weight: 600; }
+    td { padding: 3px 12px 3px 0; } code { color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Selector regression tests</h1>
+  <p id="summary">Running...</p>
+  <table id="out"></table>
+  <script type="module">
+    import { runAll } from "./scenarios.js";
+    const get = (n) => fetch(`../data/${n}.json`).then((r) => r.json());
+    const [connectors, apps, devices, assumptions] = await Promise.all(["connectors", "apps", "devices", "assumptions"].map(get));
+    const results = runAll({ connectors, apps, devices, assumptions });
+    const failed = results.filter((r) => !r.pass).length;
+    document.getElementById("summary").textContent = `${results.length - failed} / ${results.length} passed` + (failed ? ` - ${failed} FAILED` : "");
+    document.getElementById("summary").className = failed ? "fail" : "pass";
+    document.getElementById("out").innerHTML = results.map((r) =>
+      `<tr><td class="${r.pass ? "pass" : "fail"}">${r.pass ? "PASS" : "FAIL"}</td><td>${r.name}</td><td><code>${r.detail ?? ""}</code></td></tr>`).join("");
+    window.__testResult = { total: results.length, failed, results };
+  </script>
+</body>
+</html>
