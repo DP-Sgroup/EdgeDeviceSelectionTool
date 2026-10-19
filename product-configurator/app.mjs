@@ -8,7 +8,7 @@ const money=n=>new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP'}).
 function notify(message){$('notice').textContent=message;}
 try{const saved=localStorage.getItem(key);if(saved){const v=readSnapshot(JSON.parse(saved));s=v.configuration;components=v.components;extra=v.extra;}}catch{notify('The saved draft could not be restored. Default configuration loaded.');}
 function persist(){try{if(!validate(s).length)localStorage.setItem(key,JSON.stringify(snapshot(s,components,extra)));}catch{notify('Browser storage unavailable. Download your configuration to keep it.');}}
-function select(field,label,options){return `<label>${esc(label)}<select data-field="${field}">${Object.entries(options).map(([v,label])=>`<option value="${esc(v)}" ${s[field]===v?'selected':''}>${esc(label.label??label)} (${esc(v)})</option>`).join('')}</select></label>`;}
+function select(field,label,options){return `<label>${esc(label)}<select data-field="${field}" aria-label="${esc(label)}">${Object.entries(options).map(([v,label])=>`<option value="${esc(v)}" ${s[field]===v?'selected':''}>${esc(label.label??label)} (${esc(v)})</option>`).join('')}</select></label>`;}
 function connection(prefix,label,types){return `<h3>${label}</h3><div class="fields"><label>Port count<input data-field="${prefix}Count" type="number" min="0" max="35" value="${s[prefix+'Count']}"></label>${select(prefix+'Type','Connector / speed',types)}</div>`;}
 function render(){
   $('steps').innerHTML=names.map((n,i)=>`<button data-step="${i}" class="${step===i?'active':''}" ${step===i?'aria-current="step"':''}>${i+1}. ${n}</button>`).join('');
