@@ -1,0 +1,40 @@
+name: Configurator checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --test product-configurator/tests/engine.test.mjs
+      - run: node tests/run-node.mjs
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --prefix /tmp/dps-browser-test --no-save playwright@1.62.1
+      - run: /tmp/dps-browser-test/node_modules/.bin/playwright install --with-deps chromium
+      - name: Start static server
+        run: python3 -m http.server 8080 > /tmp/dps-server.log 2>&1 &
+      - name: Check wizard in Chromium
+        env:
+          NODE_PATH: /tmp/dps-browser-test/node_modules
+        run: node product-configurator/tests/browser-smoke.cjs
+      - name: Retain UI screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: configurator-ui-review
+          path: /tmp/dps-configurator-*.png
+          if-no-files-found: ignore
+          retention-days: 7
