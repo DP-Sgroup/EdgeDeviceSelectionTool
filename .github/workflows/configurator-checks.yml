@@ -30,3 +30,11 @@ jobs:
         env:
           NODE_PATH: /tmp/dps-browser-test/node_modules
         run: node product-configurator/tests/browser-smoke.cjs
+      - name: Retain UI screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: configurator-ui-review
+          path: /tmp/dps-configurator-*.png
+          if-no-files-found: ignore
+          retention-days: 7
