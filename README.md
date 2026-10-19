@@ -76,3 +76,7 @@ The site is public. `noindex` asks search engines not to list it but is not acce
 Siemens publishes almost no CPU sizing, so CPU figures rest on measurements from two client sites plus one Siemens test. Device
 specifications follow the Siemens Industrial Edge devices page. This is an engineering aid, not a Siemens tool - always confirm the final
 configuration, app compatibility (Industrial Edge Hub) and licensing with Siemens or your distributor.
+
+## Product part-number configurator
+
+The separate [DPS Product Configurator](product-configurator/) builds Edge, Cyber and Net part numbers against DPS_IMS_STAND0001 v1.0 and prepares draft BoMs and batch costs. It includes the Siemens IOT2050 DPS Edge Lite hardware option. See its [README](product-configurator/README.md) for operation, tests and engineering release limitations.
